@@ -13,8 +13,12 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+
+
         return [
-            //
+            'title' => $this->faker->text(20),
+            'created_at' => $this->faker->date(),
+            'update_at' => $this->faker->date()
         ];
     }
 }
