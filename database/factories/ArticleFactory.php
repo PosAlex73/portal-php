@@ -20,10 +20,10 @@ class ArticleFactory extends Factory
         return [
             'title' => $this->faker->text(20),
             'text' => $this->faker->text(500),
-            'image' => $this->faker->image(),
+            'image' => $this->faker->text(10),
             'status' => $statuses->random(),
-            'created' => $this->faker->date(),
-            'updated' => $this->faker->date()
+            'created_at' => $this->faker->date(),
+            'updated_at' => $this->faker->date()
         ];
     }
 }

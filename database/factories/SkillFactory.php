@@ -18,7 +18,7 @@ class SkillFactory extends Factory
 
         return [
             'title' => $this->faker->text(10),
-            'status' => $statuses->random(1)
+            'status' => $statuses->random(1)->first()
         ];
     }
 }

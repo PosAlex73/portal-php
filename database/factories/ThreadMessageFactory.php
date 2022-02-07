@@ -18,9 +18,8 @@ class ThreadMessageFactory extends Factory
         $statuses = collect(MessageStatuses::getAll());
 
         return [
-            'thread_id' => Thread::all()->random(1)->get(['thread_id']),
             'message' => $this->faker->text(35),
-            'status' => $statuses->random(1)
+            'status' => $statuses->random(1)->first()
         ];
     }
 }

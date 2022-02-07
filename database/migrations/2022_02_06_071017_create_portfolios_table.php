@@ -18,7 +18,6 @@ class CreatePortfoliosTable extends Migration
             $table->string('title', 255)->nullable(false);
             $table->text('description')->nullable(true);
             $table->string('image', 1024)->nullable(true)->default('');
-            $table->date('created');
             $table->string('url')->nullable(false);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('users')->cascadeOnDelete();

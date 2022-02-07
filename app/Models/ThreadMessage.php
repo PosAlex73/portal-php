@@ -15,6 +15,6 @@ class ThreadMessage extends Model
 
     public function thread()
     {
-        return $this->belongsTo(Thread::class);
+        return $this->belongsTo(Thread::class, 'thread_id', 'thread_id');
     }
 }

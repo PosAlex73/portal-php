@@ -17,9 +17,9 @@ class PortfolioFactory extends Factory
         return [
             'title' => $this->faker->text(15),
             'description' => $this->faker->text(50),
-            'image' => $this->faker->image(),
+            'image' => $this->faker->text,
             'url' => $this->faker->text(20),
-            'user_id' => User::all()->random(1)
+//            'user_id' => User::all()->random(1)->get('user_id')
         ];
     }
 }

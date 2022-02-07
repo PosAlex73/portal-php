@@ -18,8 +18,7 @@ class ThreadFactory extends Factory
         $statuses = collect(CommonStatuses::getAll());
 
         return [
-            'user_id' => User::all()->random(1)->get(['user_id']),
-            'status' => $statuses->random(1)
+            'status' => $statuses->random(1)->first()
         ];
     }
 }

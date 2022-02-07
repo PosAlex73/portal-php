@@ -24,9 +24,8 @@ class UserContactFactory extends Factory
         return [
             'title' => $this->faker->text(7),
             'contact' => $this->faker->text(20),
-            'type' => $types->random(1),
-            'status' => $types->random(1),
-            'user_id' => User::all()->random(1)->get(['user_id'])
+            'type' => $types->random(1)->first(),
+            'status' => $types->random(1)->first(),
         ];
     }
 }

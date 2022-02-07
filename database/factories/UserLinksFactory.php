@@ -19,8 +19,7 @@ class UserLinksFactory extends Factory
 
         return [
             'title' => $this->faker->text(20),
-            'status' => $statuses->random(1),
-            'user_id' => User::all()->random(1)->get(['user_id'])
+            'status' => $statuses->random(1)->first(),
         ];
     }
 }

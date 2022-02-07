@@ -13,8 +13,8 @@ class Skill extends Model
         'title', 'status'
     ];
 
-    public function portfolios()
+    public function users()
     {
-        return $this->belongsToMany(Portfolio::class);
+        return $this->belongsToMany(User::class);
     }
 }
