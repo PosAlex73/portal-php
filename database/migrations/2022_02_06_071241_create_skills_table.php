@@ -14,7 +14,7 @@ class CreateSkillsTable extends Migration
     public function up()
     {
         Schema::create('skills', function (Blueprint $table) {
-            $table->id('skill_id');
+            $table->id();
             $table->string('title', 255)->nullable(false);
             $table->string('status', 1)->nullable(false)->default(\App\Enums\CommonStatuses::ACTIVE);
             $table->timestamps();

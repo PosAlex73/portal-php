@@ -14,9 +14,9 @@ class CreateThreadMessagesTable extends Migration
     public function up()
     {
         Schema::create('thread_messages', function (Blueprint $table) {
-            $table->id('message_id');
+            $table->id();
             $table->unsignedBigInteger('thread_id');
-            $table->foreign('thread_id')->references('thread_id')->on('threads')->cascadeOnDelete();
+            $table->foreign('thread_id')->references('id')->on('threads')->cascadeOnDelete();
             $table->text('message', 512)->nullable(false);
             $table->string('status', 1)->nullable(false)->default(\App\Enums\MessageStatuses::UNREAD);
             $table->timestamps();

@@ -14,11 +14,11 @@ class CreateUserLinksTable extends Migration
     public function up()
     {
         Schema::create('user_links', function (Blueprint $table) {
-            $table->id('link_id');
+            $table->id();
             $table->string('title', 1024);
             $table->string('status', 1)->nullable(false)->default(\App\Enums\CommonStatuses::ACTIVE);
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('users')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

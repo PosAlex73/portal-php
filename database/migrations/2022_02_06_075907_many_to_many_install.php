@@ -16,16 +16,16 @@ class ManyToManyInstall extends Migration
         Schema::create('skill_user', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('skill_id');
-            $table->foreign('user_id')->references('user_id')->on('users')->cascadeOnDelete();
-            $table->foreign('skill_id')->references('skill_id')->on('skills')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('skill_id')->references('id')->on('skills')->cascadeOnDelete();
             $table->timestamps();
         });
 
         Schema::create('category_portfolio', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('portfolio_id');
-            $table->foreign('category_id')->references('category_id')->on('categories')->cascadeOnDelete();
-            $table->foreign('portfolio_id')->references('portfolio_id')->on('portfolios')->cascadeOnDelete();
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
+            $table->foreign('portfolio_id')->references('id')->on('portfolios')->cascadeOnDelete();
         });
     }
 

@@ -14,9 +14,9 @@ class CreateThreadsTable extends Migration
     public function up()
     {
         Schema::create('threads', function (Blueprint $table) {
-            $table->id('thread_id');
+            $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('users')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('status', 1)->nullable(false)->default(\App\Enums\CommonStatuses::ACTIVE);
             $table->timestamps();
         });

@@ -14,13 +14,13 @@ class CreateUserContactsTable extends Migration
     public function up()
     {
         Schema::create('user_contacts', function (Blueprint $table) {
-            $table->id('contact_id');
+            $table->id();
             $table->string('title')->nullable(false);
             $table->text('contact')->nullable(false);
             $table->string('type', 1)->nullable(false)->default(\App\Enums\ContactTypes::DEFAULT);
             $table->string('status', 1)->nullable(false)->default(\App\Enums\CommonStatuses::ACTIVE);
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('users')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

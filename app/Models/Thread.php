@@ -9,8 +9,6 @@ class Thread extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'thread_id';
-
     protected $fillable = [
         'user_id', 'status'
     ];
