@@ -9,6 +9,8 @@ class Portfolio extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'portfolio_id';
+
     protected $fillable = [
         'title', 'description', 'image', 'url', 'user_id'
     ];

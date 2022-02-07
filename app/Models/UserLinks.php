@@ -9,6 +9,8 @@ class UserLinks extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'link_id';
+
     protected $fillable = [
         'title', 'status', 'user_id'
     ];

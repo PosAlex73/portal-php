@@ -28,7 +28,7 @@ class CommonSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Admin Admin',
             'email' => 'admin@admin.ru',
             'email_verified_at' => now(),
@@ -50,8 +50,9 @@ class CommonSeeder extends Seeder
             Skill::factory()->count(5)->hasAttached($user)->create();
         }
 
+        $threads = Thread::all();
         foreach ($threads as $thread) {
-            ThreadMessage::factory()->count(3)->for($thread, 'messages')->create();
+            ThreadMessage::factory()->count(3)->for($thread, 'thread')->create();
         }
     }
 }

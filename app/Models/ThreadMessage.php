@@ -9,6 +9,8 @@ class ThreadMessage extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'message_id';
+
     protected $fillable = [
         'thread_id', 'message', 'status'
     ];
