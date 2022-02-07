@@ -4,16 +4,17 @@ use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Front\PortfolioController;
 use App\Http\Controllers\Front\ProfileController;
+use App\Http\Controllers\Front\UserController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 require __DIR__ . '/admin.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
+
+Route::prefix('/users')->group(function () {
+    Route::get('/', [UserController::class, 'list'])->name('front.users');
+});
 
 Route::prefix('/blog')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('blog_list');

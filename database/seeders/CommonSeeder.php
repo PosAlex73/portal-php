@@ -12,12 +12,12 @@ use App\Models\ThreadMessage;
 use App\Models\User;
 use App\Models\UserContact;
 use App\Models\UserLinks;
+use Database\Seeders\Settings\SettingsInitial;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Illuminate\Testing\Fluent\Concerns\Has;
 
 class CommonSeeder extends Seeder
 {
@@ -48,11 +48,14 @@ class CommonSeeder extends Seeder
             UserLinks::factory()->count(5)->for($user)->create();
             UserContact::factory()->count(3)->for($user)->create();
             Skill::factory()->count(5)->hasAttached($user)->create();
+            Portfolio::factory()->count(5)->for($user)->create();
         }
 
         $threads = Thread::all();
         foreach ($threads as $thread) {
             ThreadMessage::factory()->count(3)->for($thread, 'thread')->create();
         }
+
+        DB::table('settings')->insert(SettingsInitial::getSettings());
     }
 }

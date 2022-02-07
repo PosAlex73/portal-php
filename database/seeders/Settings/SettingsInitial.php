@@ -25,8 +25,8 @@ class SettingsInitial
                 'value' => '',
                 'type' => SettingTypes::TEXTAREA
             ],
-            'up' => [
-                'title' => 'up',
+            'active' => [
+                'title' => 'active',
                 'value' => CommonStatuses::ACTIVE,
                 'type' => SettingTypes::SELECT
             ]

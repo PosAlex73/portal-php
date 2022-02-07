@@ -19,7 +19,6 @@ class PortfolioFactory extends Factory
             'description' => $this->faker->text(50),
             'image' => $this->faker->text,
             'url' => $this->faker->text(20),
-//            'user_id' => User::all()->random(1)->get('user_id')
         ];
     }
 }
