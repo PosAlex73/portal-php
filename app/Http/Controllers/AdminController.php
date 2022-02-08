@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Settings\SettingEnums;
+use App\Facades\Set;
+
 class AdminController
 {
-    public const PAGINATE = 15;
-
     public static function getPaginate()
     {
-        //TODO
-        $paginate = config('pagination');
-
-        return empty($paginate) ? static::PAGINATE : $paginate;
+        return Set::get(SettingEnums::ADMIN_PAGINATION);
     }
 }

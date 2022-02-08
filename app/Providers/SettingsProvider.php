@@ -26,7 +26,7 @@ class SettingsProvider extends ServiceProvider
      */
     public function boot()
     {
-        App::bind('set', function ($app) {
+        App::bind(Set::class, function ($app) {
            return new Set(Setting::all());
         });
     }

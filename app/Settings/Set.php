@@ -20,7 +20,7 @@ class Set
         return $this->settings;
     }
 
-    public function getSetting(string $setting)
+    public function get(string $setting)
     {
         return $this->settings->get($setting);
     }

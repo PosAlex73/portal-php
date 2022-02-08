@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-
+@include('components.front.base.header')
+<title>{{ Set::get('site_title') }}</title>
 </head>
 <body>
-
+@include('components.front.base.toolbar')
+@yield('content')
 </body>
-<script src="{{ asset('js/bootstrap.js') }}"></script>
-<script src="{{ asset('js/bootstrap_lib.js') }}"></script>
-<script src="{{ asset('js/bootstrap.esm.js') }}"></script>
-<script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+@include('components.front.base.footer')
+@include('components.front.base.scripts')
 </html>

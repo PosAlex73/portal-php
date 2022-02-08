@@ -8,7 +8,6 @@ class Set extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'set';
-//        return \App\Settings\Set::class;
+        return \App\Settings\Set::class;
     }
 }

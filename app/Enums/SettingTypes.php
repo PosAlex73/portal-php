@@ -11,4 +11,7 @@ class SettingTypes
     public const TEXTAREA = 'A';
     public const CHECKBOX = 'C';
     public const RADIO = 'R';
+    public const NUMBER = 'N';
+    public const FILE = 'F';
+    public const IMAGE = 'I';
 }
