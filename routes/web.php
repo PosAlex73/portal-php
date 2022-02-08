@@ -19,6 +19,7 @@ Route::prefix('/users')->group(function () {
 
 Route::prefix('/portfolios')->group(function () {
     Route::get('/', [PortfolioController::class, 'list'])->name('front.portfolios');
+    Route::get('/{portfolio}', [PortfolioController::class, 'show'])->name('front.portfolio');
     Route::post('/contact/{user}', [PortfolioController::class, 'contact'])->name('front.contact');
 
 });

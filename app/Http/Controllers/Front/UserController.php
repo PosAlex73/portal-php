@@ -15,9 +15,9 @@ class UserController extends Controller
         $users = User::where([
             'status' => CommonStatuses::ACTIVE,
             'type' => UserTypes::SIMPLE
-        ])->get();
+        ])->paginate(static::getPaginate());
 
-        return view('front.users.list', $users);
+        return view('front.users.list', ['users' => $users]);
     }
 
     public function user(User $user)

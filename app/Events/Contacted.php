@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\User;
+use App\Models\UserContact;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -16,15 +17,17 @@ class Contacted
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $user;
+    public $contact;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, UserContact $contact)
     {
         $this->user = $user;
+        $this->contact = $contact;
     }
 
     /**

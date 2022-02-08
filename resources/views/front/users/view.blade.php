@@ -1,6 +1,7 @@
 @extends('layouts.base_front')
 @section('content')
     <div class="container">
+        @include('components.common.back_button', ['back_route' => 'front.users'])
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">{{ $user->name }}</h5>
@@ -56,6 +57,7 @@
             <div class="container">
                 <form action="{{ route('front.contact', ['user' => $user]) }}" method="post">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
                     <div class="mb-2">
                         <label for="" class="form-label">{{ __('vars.title') }}</label>
                         <input type="text" name="title" value="" class="form-control" required>
