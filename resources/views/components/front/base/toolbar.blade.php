@@ -7,16 +7,24 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+                @foreach($front_menu as $item)
+                    <li><a href="{{ route($item['link']) }}" class="nav-link px-2 link-dark">{{ __($item['name']) }}</a></li>
+                @endforeach
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
             </form>
-            <a href="{{ route('login') }}" role="button" aria-disabled="true" class="btn btn-outline-success mr-2">{{ __('var.login') }}</a>
-            <a href="{{ route('register') }}" role="button" aria-disabled="true" class="btn btn-outline-success">{{ __('var.register') }}</a>
+            @guest
+                <a href="{{ route('login') }}" role="button" aria-disabled="true" class="btn btn-outline-success mr-2">{{ __('var.login') }}</a>
+                <a href="{{ route('register') }}" role="button" aria-disabled="true" class="btn btn-outline-success">{{ __('var.register') }}</a>
+            @else
+                <a href="{{ route('front_profile') }}" role="button" aria-disabled="true" class="btn btn-outline-success mr-2">{{ __('var.profile') }}</a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <input type="submit" class="btn btn-outline-danger" value="{{ __('var.logout') }}">
+                </form>
+            @endguest
         </div>
     </div>
 </header>

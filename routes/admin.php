@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SkillController;
@@ -13,7 +14,9 @@ use App\Http\Controllers\UserLinksController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/admin/')->middleware(['auth', 'checkAdmin'])->group(function () {
+Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
+    Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::resource('user', UserController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('skill', SkillController::class);

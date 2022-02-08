@@ -10,9 +10,16 @@ use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
-    public function list()
+    public function list(Request $request)
     {
+        if ($request->exists('search')) {
+            $search = $request->get('search');
+            $portfolios = Portfolio::where(['title', 'LIKE', "%$search"])->orWhere(['description', 'LIKE', "%$search"]);
+        } else {
+            $portfolios = Portfolio::all(static::getPaginate());
+        }
 
+        return view('front.portfolios.list', ['portfolios' => $portfolios]);
     }
 
     public function show(Portfolio $portfolio)

@@ -15,7 +15,8 @@ class CreateUserLinksTable extends Migration
     {
         Schema::create('user_links', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 1024);
+            $table->string('title', 1024)->nullable(false);
+            $table->string('url', 1024)->default('');
             $table->string('status', 1)->nullable(false)->default(\App\Enums\CommonStatuses::ACTIVE);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

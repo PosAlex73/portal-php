@@ -12,6 +12,8 @@ use App\Models\ThreadMessage;
 use App\Models\User;
 use App\Models\UserContact;
 use App\Models\UserLinks;
+use App\Models\UserProfile;
+use App\Models\UserSetting;
 use Database\Seeders\Settings\SettingsInitial;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
@@ -49,6 +51,8 @@ class CommonSeeder extends Seeder
             UserContact::factory()->count(3)->for($user)->create();
             Skill::factory()->count(5)->hasAttached($user)->create();
             Portfolio::factory()->count(5)->for($user)->create();
+            UserProfile::factory()->count(1)->for($user)->create();
+            UserSetting::factory()->count(1)->for($user)->create();
         }
 
         $threads = Thread::all();

@@ -22,6 +22,7 @@ class CreateUserProfilesTable extends Migration
             $table->string('lang', 255);
             $table->text('skills');
             $table->text('about');
+            $table->string('image')->nullable(true)->default('');
             $table->timestamps();
         });
     }

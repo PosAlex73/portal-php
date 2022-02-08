@@ -19,6 +19,7 @@ class UserLinksFactory extends Factory
 
         return [
             'title' => $this->faker->text(20),
+            'url' => $this->faker->url(),
             'status' => $statuses->random(1)->first(),
         ];
     }

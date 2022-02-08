@@ -21,6 +21,15 @@ class CreateSettingsTable extends Migration
             $table->string('type', 1)->nullable(false)->default(SettingTypes::INPUT);
             $table->timestamps();
         });
+
+        Schema::create('user_settings', function (Blueprint $table) {
+            $table->id();
+            $table->string('title', 255)->nullable(false);
+            $table->text('values');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -31,5 +40,6 @@ class CreateSettingsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('settings');
+        Schema::dropIfExists('user_settings');
     }
 }

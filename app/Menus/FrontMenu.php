@@ -8,12 +8,16 @@ class FrontMenu implements AMenu
     {
         return [
             'portfolios' => [
-                'link' => 'portfolio',
+                'link' => 'front.portfolios',
                 'name' => 'menu.portfolios'
             ],
             'users' => [
-                'link' => 'users',
+                'link' => 'front.users',
                 'name' => 'menu.users'
+            ],
+            'blog' => [
+                'link' => 'front.blog',
+                'name' => 'menu.blog'
             ]
         ];
     }

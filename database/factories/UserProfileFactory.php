@@ -16,7 +16,6 @@ class UserProfileFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::all()->random(1)->get(['user_id']),
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
             'lang' => $this->faker->languageCode(),

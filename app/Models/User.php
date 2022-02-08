@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->hasMany(Portfolio::class);
     }
 
+    public function links()
+    {
+        return $this->hasMany(UserLinks::class);
+    }
+
     public function skills()
     {
         return $this->belongsToMany(Skill::class);
@@ -67,5 +72,10 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(UserProfile::class);
+    }
+
+    public function settings()
+    {
+        return $this->hasOne(UserSetting::class);
     }
 }

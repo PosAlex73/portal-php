@@ -12,7 +12,10 @@ class Set
 
     public function __construct(Collection $settings)
     {
-        $this->settings = $settings;
+        $this->settings = new Collection();
+        foreach ($settings as $setting) {
+            $this->settings->put($setting->title, $setting->value);
+        }
     }
 
     public function getSettings()
