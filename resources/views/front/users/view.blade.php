@@ -13,6 +13,17 @@
                     @endforeach
                 @endif
 
+                <div class="my-4">
+                    @if($user->profile->phone)
+                        <p>{{ $user->profile->phone }}</p>
+                    @endif
+
+                    @if($user->email)
+                        <p>{{ $user->email }}</p>
+                    @endif
+                </div>
+
+
                 @if($user->links->count() > 0)
                     <h2 class="my-4">{{ __('vars.user_links') }}</h2>
                     <div class="list-group my-4">
@@ -40,6 +51,29 @@
                 @else
                     <p>{{ __('vars.user_dont_have_portfolios') }}</p>
                 @endif
+            </div>
+
+            <div class="container">
+                <form action="{{ route('front.contact', ['user' => $user]) }}" method="post">
+                    @csrf
+                    <div class="mb-2">
+                        <label for="" class="form-label">{{ __('vars.title') }}</label>
+                        <input type="text" name="title" value="" class="form-control" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="" class="form-label">{{ __('vars.message') }}</label>
+                        <textarea name="contact" id="" cols="30" rows="10" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-2">
+                        <label for="" class="form-label">{{ __('vars.type') }}</label>
+                        <select name="type" id="" class="form-select" required>
+                            @foreach($contact_types as $type)
+                                <option value="{{ $type }}">{{ __('vars.contact_type_' . $type) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary m-2">{{ __('vars.submit') }}</button>
+                </form>
             </div>
         </div>
     </div>

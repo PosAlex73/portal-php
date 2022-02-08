@@ -19,6 +19,8 @@ Route::prefix('/users')->group(function () {
 
 Route::prefix('/portfolios')->group(function () {
     Route::get('/', [PortfolioController::class, 'list'])->name('front.portfolios');
+    Route::post('/contact/{user}', [PortfolioController::class, 'contact'])->name('front.contact');
+
 });
 
 Route::prefix('/blog')->group(function () {
@@ -39,6 +41,5 @@ Route::prefix('/profile')->middleware(['auth'])->group(function() {
         Route::put('/project/{portfolio}', [PortfolioController::class, 'update'])->name('portfolio_update');
         Route::delete('/project/delete/{portfolio}', [PortfolioController::class, 'delete'])->name('portfolio_delete');
 
-        Route::post('/project/contact/{contact}', [PortfolioController::class, 'contact'])->name('contact');
     });
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Models\User;
 use App\Models\UserContact;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
@@ -42,7 +43,7 @@ class PortfolioController extends Controller
 
     }
 
-    public function contact(UserContact $contact)
+    public function contact(Request $request, User $user)
     {
 
     }
