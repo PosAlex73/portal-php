@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Composers\AdminMenuComposer;
 use App\Composers\CommonStatusComposer;
 use App\Composers\FrontCommonComposer;
 use App\Composers\MessageComposer;
@@ -35,6 +36,7 @@ class ComposeProvider extends ServiceProvider
         View::composer(['admin.articles.*', 'admin.thread.*', 'admin.skill.*', 'admin.contacts.*', 'admin.links.*'], CommonStatusComposer::class);
         View::composer('admin.threads.*', MessageComposer::class);
         View::composer('front.*', FrontCommonComposer::class);
+        View::composer('admin.*', AdminMenuComposer::class);
         View::composer('front.users.*', PortfolioComposer::class);
     }
 }

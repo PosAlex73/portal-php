@@ -40,6 +40,16 @@ class CommonSeeder extends Seeder
             'status' => CommonStatuses::ACTIVE
         ]);
 
+        User::create([
+            'name' => 'User User',
+            'email' => 'user@user.ru',
+            'email_verified_at' => now(),
+            'password' => Hash::make('admin'),
+            'remember_token' => Str::random(10),
+            'type' => UserTypes::SIMPLE,
+            'status' => CommonStatuses::ACTIVE
+        ]);
+
         Article::factory()->count(50)->create();
 
         $users = User::factory()->count(150)->create();

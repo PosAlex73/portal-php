@@ -94,4 +94,11 @@ class UserController extends AdminController
 
         return view('admin.index');
     }
+
+    public function massDelete(Request $request)
+    {
+        User::destroy($request->only('users'));
+
+        return redirect(route('user.index'));
+    }
 }

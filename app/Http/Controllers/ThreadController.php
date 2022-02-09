@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreThreadRequest;
 use App\Http\Requests\UpdateThreadRequest;
 use App\Models\Thread;
+use Illuminate\Http\Request;
 
 class ThreadController extends AdminController
 {
@@ -92,6 +93,13 @@ class ThreadController extends AdminController
     public function destroy(Thread $thread)
     {
         $thread->delete();
+
+        return redirect(route('thread.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        Thread::destroy($request->only('threads'));
 
         return redirect(route('thread.index'));
     }

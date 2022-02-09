@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ArticleController extends AdminController
@@ -97,6 +98,13 @@ class ArticleController extends AdminController
     public function destroy(Article $article)
     {
         $article->delete();
+
+        return redirect(route('article.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        Article::destroy($request->only('articles'));
 
         return redirect(route('article.index'));
     }

@@ -92,4 +92,11 @@ class SkillController extends AdminController
 
         return redirect(route('skill.index'));
     }
+
+    public function massDelete(Request $request)
+    {
+        Skill::destroy($request->only('skills'));
+
+        return redirect(route('skill.index'));
+    }
 }

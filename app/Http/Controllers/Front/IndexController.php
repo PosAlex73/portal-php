@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Front;
 use App\Enums\CommonStatuses;
 use App\Enums\UserTypes;
 use App\Http\Controllers\Controller;
+use App\Mail\Contacted;
 use App\Models\Category;
 use App\Models\Portfolio;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
 {

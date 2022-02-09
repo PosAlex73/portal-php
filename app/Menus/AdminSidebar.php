@@ -28,7 +28,7 @@ class AdminSidebar implements AMenu
                 'name' => 'menu.skills'
             ],
             'article' => [
-                'link' => 'article.link',
+                'link' => 'article.index',
                 'name' => 'menu.articles'
             ]
         ];

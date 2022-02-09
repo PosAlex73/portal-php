@@ -6,6 +6,7 @@ use App\Http\Requests\StorePortfolioRequest;
 use App\Http\Requests\UpdatePortfolioRequest;
 use App\Models\Category;
 use App\Models\Portfolio;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class PortfolioController extends AdminController
@@ -94,6 +95,13 @@ class PortfolioController extends AdminController
     public function destroy(Portfolio $portfolio)
     {
         $portfolio->delete();
+
+        return redirect(route('portfolio.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        Portfolio::destroy($request->only('categories'));
 
         return redirect(route('portfolio.index'));
     }

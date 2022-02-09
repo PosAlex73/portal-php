@@ -29,5 +29,12 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('user_link', UserLinksController::class);
     Route::resource('user_profile', UserProfileController::class)->except(['index']);
+
+    Route::delete('user/mass_delete', [UserController::class, ['massDelete']])->name('user.mass_delete');
+    Route::delete('portfolio/mass_delete', [UserController::class, ['massDelete']])->name('portfolio.mass_delete');
+    Route::delete('skill/mass_delete', [UserController::class, ['massDelete']])->name('skill.mass_delete');
+    Route::delete('thread/mass_delete', [UserController::class, ['massDelete']])->name('thread.mass_delete');
+    Route::delete('category/mass_delete', [UserController::class, ['massDelete']])->name('category.mass_delete');
+    Route::delete('article/mass_delete', [UserController::class, ['massDelete']])->name('article.mass_delete');
 });
 

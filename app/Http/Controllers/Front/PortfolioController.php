@@ -55,7 +55,7 @@ class PortfolioController extends Controller
 
         $contact = UserContact::create($fields);
 
-        Event::dispatch(new Contacted($contact, $user));
+        Event::dispatch(new Contacted($user, $contact));
 
         return redirect(route('front.user', ['user' => $user]));
     }

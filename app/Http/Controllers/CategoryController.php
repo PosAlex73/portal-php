@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class CategoryController extends AdminController
@@ -100,5 +101,12 @@ class CategoryController extends AdminController
         $category->delete();
 
         return redirect(route('category.list'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        Category::destroy($request->only('categories'));
+
+        return redirect(route('category.index'));
     }
 }
