@@ -9,6 +9,6 @@ class CommonStatusComposer
 {
     public function compose(View $view)
     {
-        $view->with('statuses', CommonStatuses::getAll());
+        $view->with('common_statuses', CommonStatuses::getAll());
     }
 }

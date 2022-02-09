@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePortfolioRequest;
 use App\Http\Requests\UpdatePortfolioRequest;
-use App\Models\Category;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -42,9 +41,9 @@ class PortfolioController extends AdminController
     public function store(StorePortfolioRequest $request)
     {
         $fields = $request->safe()->only(['title', 'description', 'image', 'url', 'user_id']);
-        $category = Category::create($fields);
+        $portfolio = Portfolio::create($fields);
 
-        return redirect(route('categories.edit', ['category' => $category]));
+        return redirect(route('portfolio.edit', ['portfolio' => $portfolio]));
     }
 
     /**
@@ -99,7 +98,7 @@ class PortfolioController extends AdminController
 
     public function massDelete(Request $request)
     {
-        Portfolio::destroy($request->only('categories'));
+        Portfolio::destroy($request->get('portfolios'));
 
         return redirect(route('portfolio.index'));
     }

@@ -29,7 +29,7 @@ class ArticleController extends AdminController
      */
     public function create()
     {
-        return view('admin.article.create');
+        return view('admin.articles.create');
     }
 
     /**
@@ -40,8 +40,8 @@ class ArticleController extends AdminController
      */
     public function store(StoreArticleRequest $request)
     {
-        $article = $request->safe()->only(['title', 'text', 'image', 'status', 'created', 'updated']);
-        Article::create($article);
+        $article = $request->safe()->only(['title', 'text', 'image', 'status']);
+        $article = Article::create($article);
 
         return redirect(route('article.edit', ['article' => $article]));
     }
