@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Enums\CommonStatuses;
 use App\Enums\UserTypes;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\Portfolio;
 use App\Models\Skill;
 use App\Models\Thread;
@@ -70,6 +71,7 @@ class CommonSeeder extends Seeder
             ThreadMessage::factory()->count(3)->for($thread, 'thread')->create();
         }
 
+        Category::factory()->count(30)->create();
         DB::table('settings')->insert(SettingsInitial::getSettings());
     }
 }

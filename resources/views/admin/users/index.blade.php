@@ -1,10 +1,10 @@
 @extends('layouts.base_admin')
 @section('content')
+    <form action="{{ route('users.mass_delete') }}" method="post">
     @include('components.admin.buttons.create', ['route' => 'user.create'])
     @if($users->count() > 0)
-    <form action="{{ route('user.mass_delete') }}" method="post">
+    @include('components.admin.buttons.mass_delete')
         @csrf
-        @method('DELETE')
         <table class="table">
             <tr>
                 <th>#</th>
@@ -21,7 +21,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ __('vars.user_status_') . $user->status }}</td>
                     <td>{{ $user->created_at }}</td>
-                    <td><input type="checkbox" name="users_id[]" value="{{ $user->id }}" class="form-check"></td>
+                    <td><input type="checkbox" name="users[]" value="{{ $user->id }}" class="form-check"></td>
                 </tr>
             @endforeach
         </table>

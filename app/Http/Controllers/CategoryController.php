@@ -19,9 +19,7 @@ class CategoryController extends AdminController
     {
         $categories = Category::paginate(static::getPaginate());
 
-        return View::make('admin.categories.index', [
-            'categories' => $categories
-        ]);
+        return view('admin.categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -31,7 +29,7 @@ class CategoryController extends AdminController
      */
     public function create()
     {
-        return View::make('admin.categories.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -59,7 +57,7 @@ class CategoryController extends AdminController
      */
     public function show(Category $category)
     {
-        return View::make('admin.categories.show');
+        return view('admin.categories.show');
     }
 
     /**
@@ -70,7 +68,7 @@ class CategoryController extends AdminController
      */
     public function edit(Category $category)
     {
-        return View::make('admin.categories.edit', [
+        return view('admin.categories.edit', [
             'categories' => $category
         ]);
     }

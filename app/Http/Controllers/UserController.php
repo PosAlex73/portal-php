@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserTypes;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
@@ -16,7 +17,7 @@ class UserController extends AdminController
      */
     public function index()
     {
-        $users = User::paginate(static::getPaginate());
+        $users = User::where(['type' => UserTypes::SIMPLE])->paginate(static::getPaginate());
 
         return view('admin.users.index', ['users' => $users]);
     }
@@ -97,7 +98,7 @@ class UserController extends AdminController
 
     public function massDelete(Request $request)
     {
-        User::destroy($request->only('users'));
+        User::destroy($request->get('users'));
 
         return redirect(route('user.index'));
     }

@@ -19,9 +19,7 @@ class ArticleController extends AdminController
     {
         $articles = Article::paginate(static::getPaginate());
 
-        return View::make('admin.article.index', [
-           'articles' => $articles
-        ]);
+        return view('admin.articles.index', ['articles' => $articles]);
     }
 
     /**
@@ -31,7 +29,7 @@ class ArticleController extends AdminController
      */
     public function create()
     {
-        return View::make('admin.article.create');
+        return view('admin.article.create');
     }
 
     /**
@@ -56,7 +54,7 @@ class ArticleController extends AdminController
      */
     public function show(Article $article)
     {
-        return View::make('admin.articles.show', [
+        return view('admin.articles.show', [
             'article' => $article
         ]);
     }
@@ -69,7 +67,7 @@ class ArticleController extends AdminController
      */
     public function edit(Article $article)
     {
-        return View::make('admin.articles.edit', [
+        return view('admin.articles.edit', [
             'article' => $article
         ]);
     }

@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
         return [
             'title' => $this->faker->text(20),
             'created_at' => $this->faker->date(),
-            'update_at' => $this->faker->date()
+            'updated_at' => $this->faker->date()
         ];
     }
 }

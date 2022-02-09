@@ -20,9 +20,7 @@ class PortfolioController extends AdminController
     {
         $portfolios = Portfolio::paginate(static::getPaginate());
 
-        return View::make('admin.portfolios.index', [
-            'portfolios' => $portfolios
-        ]);
+        return view('admin.portfolios.index', ['portfolios' => $portfolios]);
     }
 
     /**
