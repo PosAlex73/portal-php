@@ -7,6 +7,7 @@ use App\Events\Contacted;
 use App\Events\ThreadMessage;
 use App\Listeners\ArticleNotification;
 use App\Listeners\ContactNotification;
+use App\Listeners\CreateUserProfile;
 use App\Listeners\ThreadNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -23,6 +24,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            CreateUserProfile::class
         ],
         Contacted::class => [
             ContactNotification::class

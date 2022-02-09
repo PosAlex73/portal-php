@@ -6,7 +6,9 @@ use App\Enums\UserTypes;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 
 class UserController extends AdminController
 {
@@ -42,6 +44,8 @@ class UserController extends AdminController
     {
         $fields = $request->safe()->only(['name', 'email', 'password', 'type', 'status']);
         $user = User::create($fields);
+
+        Event::dispatch(new Registered($user));
 
         return redirect(route('user.index', ['user' => $user]));
     }

@@ -30,7 +30,8 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required|min:2|max:255',
             'email' => 'required|email',
             'type' => ['required', Rule::in(UserTypes::getAll())],
-            'status' => ['required', Rule::in(CommonStatuses::getAll())]
+            'status' => ['required', Rule::in(CommonStatuses::getAll())],
+            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
         ];
     }
 }

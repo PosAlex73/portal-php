@@ -6,6 +6,7 @@ use App\Enums\CommonStatuses;
 use App\Enums\UserTypes;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules;
 
 class StoreUserRequest extends FormRequest
 {
@@ -16,7 +17,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -30,7 +31,8 @@ class StoreUserRequest extends FormRequest
             'name' => 'required|min:2|max:255',
             'email' => 'required|email',
             'type' => ['required', Rule::in(UserTypes::getAll())],
-            'status' => ['required', Rule::in(CommonStatuses::getAll())]
+            'status' => ['required', Rule::in(CommonStatuses::getAll())],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ];
     }
 }

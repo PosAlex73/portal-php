@@ -28,6 +28,8 @@
                 @endforeach
             </select>
         </div>
+        @include('admin.users.components.password')
+
         @include('components.admin.buttons.submit')
     </form>
 @endsection
