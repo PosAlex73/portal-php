@@ -1,6 +1,7 @@
 @extends('layouts.base_admin')
 @section('content')
     @include('components.common.back_button', ['back_route' => 'portfolio.index'])
+    @include('components.admin.common.errors')
     <form action="{{ route('portfolio.store') }}" method="post">
         @csrf
         <div class="mb-3">
@@ -17,7 +18,7 @@
         </div>
         <div class="mb-3">
             <label for="url" class="form-label">{{ __('vars.url') }}</label>
-            <input type="text" class="form-control" id="url" name="url">
+            <input type="text" class="form-control" id="url" placeholder="https://www.example.com" name="url">
         </div>
         <div class="mb-3">
             <label for="user_id" class="form-label">{{ __('vars.user') }}</label>

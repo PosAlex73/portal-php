@@ -25,7 +25,7 @@ class UpdateUserProfileRequest extends FormRequest
     {
         return [
             'portfolio_id' => 'required|exists:user_profiles',
-            'user_id' => 'required|exists:users',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 }

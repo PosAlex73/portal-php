@@ -24,7 +24,7 @@ class StoreUserProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 }

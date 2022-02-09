@@ -10,6 +10,6 @@ class SimpleUserComposer
 {
     public function compose(View $view)
     {
-        $view->with('simple_users', User::where(['type' => UserTypes::SIMPLE]));
+        $view->with('simple_users', User::where(['type' => UserTypes::SIMPLE])->get());
     }
 }

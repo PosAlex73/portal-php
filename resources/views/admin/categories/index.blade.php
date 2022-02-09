@@ -2,6 +2,7 @@
 @section('content')
     <form action="{{ route('categories.mass_delete') }}" method="post">
     @include('components.admin.buttons.create', ['route' => 'category.create'])
+    @include('components.admin.common.errors')
     @if($categories->count() > 0)
     @include('components.admin.buttons.mass_delete')
         @csrf

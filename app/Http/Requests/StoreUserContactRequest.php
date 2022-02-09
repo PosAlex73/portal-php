@@ -30,7 +30,7 @@ class StoreUserContactRequest extends FormRequest
             'title' => 'required|min:2|max:255',
             'contact' => 'required',
             'type' => ['required', Rule::in(ContactTypes::getAll())],
-            'user_id' => 'required|exists:users'
+            'user_id' => 'required|exists:users,id'
         ];
     }
 }

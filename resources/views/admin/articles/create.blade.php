@@ -1,6 +1,7 @@
 @extends('layouts.base_admin')
 @section('content')
     @include('components.common.back_button', ['back_route' => 'article.index'])
+    @include('components.admin.common.errors')
     <form action="{{ route('article.store') }}" method="post">
         @csrf
         <div class="mb-3">

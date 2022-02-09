@@ -29,7 +29,7 @@ class UpdateUserLinksRequest extends FormRequest
             'id' => 'required|exists:user_links',
             'title' => 'required|min:2|max:1024',
             'status' => ['required', Rule::in(CommonStatuses::getAll())],
-            'user_id' => 'required|exists:users'
+            'user_id' => 'required|exists:users,id'
         ];
     }
 }

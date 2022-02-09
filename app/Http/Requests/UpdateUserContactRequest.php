@@ -32,7 +32,7 @@ class UpdateUserContactRequest extends FormRequest
             'contact' => 'required',
             'type' => ['required', Rule::in(ContactTypes::getAll())],
             'status' => ['required', Rule::in(CommonStatuses::getAll())],
-            'user_id' => 'required|exists:users'
+            'user_id' => 'required|exists:users,id'
         ];
     }
 }

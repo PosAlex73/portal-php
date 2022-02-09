@@ -65,7 +65,7 @@ class PortfolioController extends AdminController
      */
     public function edit(Portfolio $portfolio)
     {
-        return view('admin.portfolio.edit');
+        return view('admin.portfolios.edit', ['portfolio' => $portfolio]);
     }
 
     /**
