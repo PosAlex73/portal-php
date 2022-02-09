@@ -2,8 +2,9 @@
 @section('content')
     @include('components.common.back_button', ['back_route' => 'portfolio.index'])
     @include('components.admin.common.errors')
-    <form action="{{ route('portfolio.store') }}" method="post">
+    <form action="{{ route('portfolio.update') }}" method="post">
         @csrf
+        @method('PUT')
         <div class="mb-3">
             <label for="title" class="form-label">{{ __('vars.title') }}</label>
             <input type="text" class="form-control" name="title" id="title" value="{{ $portfolio->title }}">

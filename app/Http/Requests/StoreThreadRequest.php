@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\CommonStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreThreadRequest extends FormRequest
 {
@@ -24,7 +26,8 @@ class StoreThreadRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required:exists:users',
+            'user_id' => 'required|unique:threads,user_id',
+            'status' => ['required', Rule::in(CommonStatuses::getAll())]
         ];
     }
 }

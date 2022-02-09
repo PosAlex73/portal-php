@@ -34,7 +34,7 @@ class ComposeProvider extends ServiceProvider
     {
         View::composer('*', SettingsComposer::class);
         View::composer('admin.users.*', UserComposer::class);
-        View::composer(['admin.articles.*', 'admin.threads.*', 'admin.skills.*', 'admin.contacts.*', 'admin.links.*'], CommonStatusComposer::class);
+        View::composer(['admin.articles.*', 'admin.threads.*', 'admin.skills.*', 'admin.contacts.*', 'admin.links.*', 'admin.users.*'], CommonStatusComposer::class);
         View::composer('admin.threads.*', MessageComposer::class);
         View::composer('front.*', FrontCommonComposer::class);
         View::composer('admin.*', AdminMenuComposer::class);

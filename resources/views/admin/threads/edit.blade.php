@@ -6,8 +6,12 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label for="title" class="form-label">{{ __('vars.title') }}</label>
-            <input type="text" class="form-control" name="title" id="title" value="{{ $thread->user->name }}">
+            <label for="status" class="form-label">{{ __('vars.status') }}</label>
+            <select name="status" id="status">
+                @foreach($common_statuses as $status)
+                    <option value="{{ $status }}">{{ __('vars.common_status_' . $status) }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label for="user_id" class="form-label">{{ __('vars.user') }}</label>

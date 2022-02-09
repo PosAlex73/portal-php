@@ -5,10 +5,6 @@
     <form action="{{ route('thread.store') }}" method="post">
         @csrf
         <div class="mb-3">
-            <label for="title" class="form-label">{{ __('vars.title') }}</label>
-            <input type="text" class="form-control" name="title" id="title">
-        </div>
-        <div class="mb-3">
             <label for="status" class="form-label">{{ __('vars.status') }}</label>
             <select name="status" id="status">
                 @foreach($common_statuses as $status)
