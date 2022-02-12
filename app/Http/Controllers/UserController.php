@@ -108,8 +108,8 @@ class UserController extends AdminController
         return redirect(route('user.index'));
     }
 
-    public function profile(User $user, UserProfile $profile)
+    public function tabs(string $tab, User $user)
     {
-        return view('admin.users.views.profile', ['user' => $user, 'profile' => $profile]);
+        return view('admin.users.views.' . $tab, ['user' => $user]);
     }
 }

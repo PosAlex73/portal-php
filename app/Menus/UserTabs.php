@@ -7,29 +7,29 @@ class UserTabs implements AMenu
     public static function getMenu(): iterable
     {
         return [
-            'user' => [
-                'link' => 'user.edit',
-                'name' => 'user_edit',
+            'users' => [
+                'link' => 'users.tabs',
+                'name' => 'user',
             ],
             'profile' => [
-                'link' => 'user_profile.profile',
-                'name' => 'user_profile_edit',
+                'link' => 'users.tabs',
+                'name' => 'profile',
             ],
             'links' => [
-                'link' => 'user_link.list',
-                'name' => 'user_link_list',
+                'link' => 'users.tabs',
+                'name' => 'links',
             ],
             'contacts' => [
-                'link' => 'user_contact.list',
-                'name' => 'user_contact_list',
+                'link' => 'users.tabs',
+                'name' => 'contacts',
             ],
             'thread' => [
-                'link' => 'thread.thread',
-                'name' => 'user_thread_edit'
+                'link' => 'users.tabs',
+                'name' => 'thread'
             ],
             'settings' => [
-                'link' => 'settings.list',
-                'name' => 'user_settings_edit'
+                'link' => 'users.tabs',
+                'name' => 'settings'
             ]
         ];
     }
