@@ -6,6 +6,7 @@ use App\Enums\UserTypes;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
@@ -105,5 +106,10 @@ class UserController extends AdminController
         User::destroy($request->get('users'));
 
         return redirect(route('user.index'));
+    }
+
+    public function profile(User $user, UserProfile $profile)
+    {
+        return view('admin.users.views.profile', ['user' => $user, 'profile' => $profile]);
     }
 }

@@ -2,6 +2,7 @@
 @section('content')
     @include('components.common.back_button', ['back_route' => 'user.index'])
     @include('components.admin.common.errors')
+    <x-users.tabs :user_tabs="$userTabs" :user="$user"/>
     <form action="{{ route('user.update', ['user' => $user]) }}" method="post">
         @csrf
         @method('PUT')

@@ -12,23 +12,23 @@ class UserTabs implements AMenu
                 'name' => 'user_edit',
             ],
             'profile' => [
-                'link' => 'user_profile.edit',
-                'name' => 'user_profile_edit'
+                'link' => 'user_profile.profile',
+                'name' => 'user_profile_edit',
             ],
             'links' => [
-                'link' => 'user_link.index',
-                'name' => 'user_link_list'
+                'link' => 'user_link.list',
+                'name' => 'user_link_list',
             ],
             'contacts' => [
-                'link' => 'user_contact.index',
-                'name' => 'user_contact__list',
+                'link' => 'user_contact.list',
+                'name' => 'user_contact_list',
             ],
             'thread' => [
-                'link' => 'thread.edit',
+                'link' => 'thread.thread',
                 'name' => 'user_thread_edit'
             ],
             'settings' => [
-                'link' => 'settings.edit',
+                'link' => 'settings.list',
                 'name' => 'user_settings_edit'
             ]
         ];

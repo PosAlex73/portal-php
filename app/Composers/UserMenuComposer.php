@@ -9,6 +9,6 @@ class UserMenuComposer
 {
     public function compose(View $view)
     {
-        $view->with('user_tabs', UserTabs::getMenu());
+        $view->with('userTabs', UserTabs::getMenu());
     }
 }
