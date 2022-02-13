@@ -1,5 +1,6 @@
-{{ $settings = $user->settings }}
-<form action="{{ route('users.settings') }}" method="post">
+<form action="{{ route('users.profile', ['user' => $user]) }}" method="post">
     @csrf
-    {{ $settings }}
+    @foreach(unserialize($user->settings->values) as $setting)
+
+    @endforeach
 </form>

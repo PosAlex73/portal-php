@@ -4,6 +4,6 @@
         {{ $label }}
     </label>
     @if(!empty($help))
-        <p>{{ $help }}</p>
+        <p class="text-muted">{{ $help }}</p>
     @endif
 </div>

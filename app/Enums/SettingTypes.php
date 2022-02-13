@@ -6,12 +6,12 @@ class SettingTypes
 {
     use Enumuble;
 
-    public const SELECT = 'S';
-    public const INPUT = 'I';
-    public const TEXTAREA = 'A';
-    public const CHECKBOX = 'C';
-    public const RADIO = 'R';
-    public const NUMBER = 'N';
-    public const FILE = 'F';
-    public const IMAGE = 'I';
+    public const SELECT = 'select';
+    public const INPUT = 'input';
+    public const TEXTAREA = 'textarea';
+    public const CHECKBOX = 'checkbox';
+    public const RADIO = 'radio';
+    public const NUMBER = 'number';
+    public const FILE = 'file';
+    public const IMAGE = 'image';
 }

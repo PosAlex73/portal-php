@@ -2,26 +2,25 @@
 
 namespace App\View\Components\Inputs;
 
+use App\Enums\SettingTypes;
 use Illuminate\View\Component;
 
-class Checkbox extends Component
+class UserSettingFields extends Component
 {
+    public $setting;
     public $name;
     public $value;
-    public $label;
-    public $help;
+    public $type;
+    public $variants;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $value, $label, $help = '')
+    public function __construct($setting)
     {
-        $this->name = $name;
-        $this->value = $value;
-        $this->label = $label;
-        $this->help = $help;
+        $this->setting = $setting;
     }
 
     /**
@@ -31,6 +30,6 @@ class Checkbox extends Component
      */
     public function render()
     {
-        return view('components.inputs.checkbox');
+        return ('');
     }
 }

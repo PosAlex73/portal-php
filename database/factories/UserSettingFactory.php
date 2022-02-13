@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Database\Seeders\Settings\UserSettingInitial;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserSettingFactory extends Factory
@@ -14,7 +15,7 @@ class UserSettingFactory extends Factory
     public function definition()
     {
         return [
-            'values' => ''
+            'values' => serialize(UserSettingInitial::getUserSettings())
         ];
     }
 }

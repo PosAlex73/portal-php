@@ -28,7 +28,6 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::resource('contacts', UserContactController::class);
     Route::resource('user', UserController::class);
     Route::resource('user_link', UserLinksController::class);
-    Route::resource('user_profile', UserProfileController::class)->except(['index']);
 
     Route::post('user/mass_delete', [UserController::class, 'massDelete'])->name('users.mass_delete');
     Route::post('portfolio/mass_delete', [PortfolioController::class, 'massDelete'])->name('portfolios.mass_delete');
@@ -38,5 +37,6 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::post('article/mass_delete', [ArticleController::class, 'massDelete'])->name('articles.mass_delete');
 
     Route::get('user/{tab}/{user}', [UserController::class, 'tabs'])->name('users.tabs');
+    Route::post('user/profile/{user}', [UserProfileController::class, 'profile'])->name('users.profile');
 });
 
