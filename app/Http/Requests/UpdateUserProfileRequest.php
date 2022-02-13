@@ -24,8 +24,10 @@ class UpdateUserProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'portfolio_id' => 'required|exists:user_profiles',
-            'user_id' => 'required|exists:users,id',
+            'title' => 'nullable|max:255|min:2',
+            'description' => 'nullable',
+            'image' => 'nullable|file',
+            'url' => 'nullable'
         ];
     }
 }

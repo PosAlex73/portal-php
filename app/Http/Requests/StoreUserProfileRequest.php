@@ -24,7 +24,10 @@ class StoreUserProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users,id',
+            'title' => 'nullable|max:255|min:2',
+            'description' => 'nullable',
+            'image' => 'nullable|file',
+            'url' => 'nullable'
         ];
     }
 }

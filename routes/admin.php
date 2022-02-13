@@ -38,6 +38,8 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::get('user/{tab}/{user}', [UserController::class, 'tabs'])->name('users.tabs');
     Route::post('user/profile/{user}', [UserProfileController::class, 'profile'])->name('users.profile');
 
+    Route::put('user/profile/{user}', [UserProfileController::class, 'update'])->name('profiles.update');
+
     Route::post('thread/{thread}', [ThreadMessageController::class, 'saveMessage'])->name('threads.save_message');
 
     //Common settings

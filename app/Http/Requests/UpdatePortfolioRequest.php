@@ -24,12 +24,10 @@ class UpdatePortfolioRequest extends FormRequest
     public function rules()
     {
         return [
-            'portfolio_id' => 'required|exists:portfolios',
             'title' => 'required|min:2|max:255',
             'description' => 'required',
             'image' => 'nullable',
             'url' => 'required|url|max:255',
-            'user_id' => 'required|exists:users,id'
         ];
     }
 }

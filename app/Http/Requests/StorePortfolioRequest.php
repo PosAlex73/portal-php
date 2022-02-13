@@ -28,7 +28,6 @@ class StorePortfolioRequest extends FormRequest
             'description' => 'required',
             'image' => 'nullable',
             'url' => 'required|url|max:255',
-            'user_id' => 'required|exists:users,id'
         ];
     }
 }
