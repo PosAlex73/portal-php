@@ -2,7 +2,7 @@
 @section('content')
     @include('components.common.back_button', ['back_route' => 'category.index'])
     @include('components.admin.common.errors')
-    <form action="{{ route('category.update') }}" method="post">
+    <form action="{{ route('category.update', ['category' => $category]) }}" method="post">
         @csrf
         @method('PUT')
         <div class="mb-3">

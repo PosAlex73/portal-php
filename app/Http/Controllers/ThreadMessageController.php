@@ -2,47 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserTypes;
 use App\Http\Requests\StoreThreadMessageRequest;
-use App\Http\Requests\UpdateThreadMessageRequest;
 use App\Models\Thread;
-use App\Models\ThreadMessage;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadMessageController extends AdminController
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreThreadMessageRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreThreadMessageRequest $request)
+    public function saveMessage(StoreThreadMessageRequest $request, Thread $thread)
     {
-        $thread = Thread::find($request->get('thread_id'));
-        $fields = $request->safe()->only(['thread_id', 'message', 'status']);
-        ThreadMessage::create($fields);
+        $fields = $request->safe()->only('message');
 
-    }
+        if (Auth::user()->type === UserTypes::ADMIN) {
+            $fields['user_id'] = 0;
+        } else {
+            $fields['user_id'] = Auth::user()->id;
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateThreadMessageRequest  $request
-     * @param  \App\Models\ThreadMessage  $threadMessage
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateThreadMessageRequest $request, ThreadMessage $threadMessage)
-    {
-        //
-    }
+        $thread->messages()->create($fields);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ThreadMessage  $threadMessage
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ThreadMessage $threadMessage)
-    {
-        //
+        return redirect(route('thread.edit', ['thread' => $thread]));
     }
 }

@@ -21,7 +21,6 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('skill', SkillController::class);
     Route::resource('thread', ThreadController::class);
-    Route::resource('message', ThreadMessageController::class)->except(['index', 'create', 'show', 'edit']);
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('article', ArticleController::class);
     Route::resource('setting', SettingController::class)->only(['index', 'edit', 'update']);
@@ -38,5 +37,7 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
 
     Route::get('user/{tab}/{user}', [UserController::class, 'tabs'])->name('users.tabs');
     Route::post('user/profile/{user}', [UserProfileController::class, 'profile'])->name('users.profile');
+
+    Route::post('thread/{thread}', [ThreadMessageController::class, 'saveMessage'])->name('threads.save_message');
 });
 

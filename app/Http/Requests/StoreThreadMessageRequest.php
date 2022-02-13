@@ -24,7 +24,6 @@ class StoreThreadMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'thread_id' => 'required|exists:threads',
             'message' => 'required',
         ];
     }
