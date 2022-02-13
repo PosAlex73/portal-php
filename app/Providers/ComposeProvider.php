@@ -13,6 +13,7 @@ use App\Composers\UserComposer;
 use App\Composers\UserMenuComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\Composers\Users\UserProfileComposer;
 
 class ComposeProvider extends ServiceProvider
 {
@@ -43,5 +44,7 @@ class ComposeProvider extends ServiceProvider
 
         View::composer(['admin.threads.edit', 'admin.threads.create', 'admin.portfolios.edit', 'admin.portfolios.create'], SimpleUserComposer::class);
         View::composer(['admin.users.edit', 'admin.users.views.*', 'front.profile.*'], UserMenuComposer::class);
+
+        View::composer(['admin.users.views.profile'], UserProfileComposer::class);
     }
 }

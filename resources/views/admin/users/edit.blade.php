@@ -1,8 +1,5 @@
-@extends('layouts.base_admin')
-@section('content')
-    @include('components.common.back_button', ['back_route' => 'user.index'])
-    @include('components.admin.common.errors')
-    <x-users.tabs :user_tabs="$userTabs" :user="$user"/>
+@extends('layouts.users.user')
+@section('user_info')
     <form action="{{ route('user.update', ['user' => $user]) }}" method="post">
         @csrf
         @method('PUT')

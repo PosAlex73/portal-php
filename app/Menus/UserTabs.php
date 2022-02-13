@@ -7,10 +7,6 @@ class UserTabs implements AMenu
     public static function getMenu(): iterable
     {
         return [
-            'users' => [
-                'link' => 'users.tabs',
-                'name' => 'user',
-            ],
             'profile' => [
                 'link' => 'users.tabs',
                 'name' => 'profile',

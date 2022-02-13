@@ -1,7 +1,5 @@
-@extends('layouts.base_admin')
-@section('content')
-    @include('components.common.back_button', ['back_route' => 'user.index'])
-    @include('components.admin.common.errors')
+@extends('layouts.users.user')
+@section('user_info')
     <form action="{{ route('user.store') }}" method="post">
         @csrf
         <div class="mb-2">
