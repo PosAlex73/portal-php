@@ -1,1 +1,4 @@
-@include('admin.users.edit')
+@extends('layouts.users.user')
+@section('user_info')
+
+@endsection

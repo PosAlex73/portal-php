@@ -1,6 +1,8 @@
-<form action="{{ route('users.profile', ['user' => $user]) }}" method="post">
-    @csrf
-    @foreach(unserialize($user->settings->values) as $setting)
+@php
+    $profile = $user->profile
+@endphp
 
-    @endforeach
-</form>
+@extends('layouts.users.user')
+@section('user_info')
+
+@endsection

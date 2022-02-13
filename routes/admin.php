@@ -12,6 +12,7 @@ use App\Http\Controllers\UserContactController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserLinksController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\UserSettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
@@ -23,7 +24,6 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::resource('thread', ThreadController::class);
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('article', ArticleController::class);
-    Route::resource('setting', SettingController::class)->only(['index', 'edit', 'update']);
     Route::resource('contacts', UserContactController::class);
     Route::resource('user', UserController::class);
     Route::resource('user_link', UserLinksController::class);
@@ -39,5 +39,12 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::post('user/profile/{user}', [UserProfileController::class, 'profile'])->name('users.profile');
 
     Route::post('thread/{thread}', [ThreadMessageController::class, 'saveMessage'])->name('threads.save_message');
+
+    //Common settings
+    Route::post('settings/update', [SettingController::class, 'update'])->name('settings.update');
+    Route::get('settings/update', [SettingController::class, 'index'])->name('settings.index');
+
+    //User settings
+    Route::post('user_settings/{user}', [UserSettingsController::class, 'update'])->name('user_settings.update');
 });
 

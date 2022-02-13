@@ -15,7 +15,7 @@
             <label for="status" class="form-select">{{ __('vars.status') }}</label>
             <select name="status" id="status">
                 @foreach($common_statuses as $status)
-                    <option value="{{ $status }}"@if($user->$status === $status) selected @endif>{{ __('vars.common_status_' . $status) }}</option>
+                    <option value="{{ $status }}" @if($user->status === $status) selected @endif>{{ __('vars.common_status_' . $status) }}</option>
                 @endforeach
             </select>
         </div>
@@ -23,7 +23,7 @@
             <label for="type" class="form-select">{{ __('vars.user_type') }}</label>
             <select name="type" id="type">
                 @foreach($user_types as $type)
-                    <option value="{{ $type }}"@if($user->type === $type) selected @endif>{{ __('vars.user_types' . $type) }}</option>
+                    <option value="{{ $type }}" @if($user->type === $type) selected @endif>{{ __('vars.user_types' . $type) }}</option>
                 @endforeach
             </select>
         </div>

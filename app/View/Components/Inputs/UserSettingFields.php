@@ -12,6 +12,8 @@ class UserSettingFields extends Component
     public $value;
     public $type;
     public $variants;
+    public $label;
+    public $help;
 
     /**
      * Create a new component instance.
@@ -21,6 +23,11 @@ class UserSettingFields extends Component
     public function __construct($setting)
     {
         $this->setting = $setting;
+        $this->name = 'values[' . $setting['title'] . ']';
+        $this->value = $setting['value'];
+        $this->type = $setting['type'];
+        $this->label = 'label' . $setting['title'];
+        $this->help = '';
     }
 
     /**
@@ -30,6 +37,6 @@ class UserSettingFields extends Component
      */
     public function render()
     {
-        return ('');
+        return ('components.fields.' . $this->type);
     }
 }

@@ -13,16 +13,6 @@ use Illuminate\Queue\InteractsWithQueue;
 class CreateUserProfile
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Handle the event.
      *
      * @param  object  $event
@@ -31,8 +21,7 @@ class CreateUserProfile
     public function handle($event)
     {
         $user = $event->user;
-        UserProfile::create([
-            'user_id' => $user->id,
+        $user->profile()->create([
             'phone' => '',
             'address' => '',
             'lang' => 'en',
@@ -41,15 +30,12 @@ class CreateUserProfile
             'image' => ''
         ]);
 
-        UserSetting::create([
-            'user_id' => $user->id,
+        $user->settings()->create([
             'values' => ''
         ]);
 
-        Thread::create([
-            'user_id' => $user->id,
+        $user->thread()->create([
             'status' => CommonStatuses::ACTIVE
-
         ]);
     }
 }
