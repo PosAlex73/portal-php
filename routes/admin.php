@@ -24,7 +24,7 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::resource('thread', ThreadController::class);
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('article', ArticleController::class);
-    Route::resource('contacts', UserContactController::class);
+    Route::resource('contact', UserContactController::class);
     Route::resource('user', UserController::class);
     Route::resource('user_link', UserLinksController::class);
 
@@ -35,6 +35,7 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::post('category/mass_delete', [CategoryController::class, 'massDelete'])->name('categories.mass_delete');
     Route::post('article/mass_delete', [ArticleController::class, 'massDelete'])->name('articles.mass_delete');
     Route::post('links/mass_delete', [UserLinksController::class, 'massDelete'])->name('links.mass_delete');
+    Route::post('contacts/mass_delete', [UserContactController::class, 'massDelete'])->name('contacts.mass_delete');
 
     Route::get('user/{tab}/{user}', [UserController::class, 'tabs'])->name('users.tabs');
     Route::post('user/profile/{user}', [UserProfileController::class, 'profile'])->name('users.profile');

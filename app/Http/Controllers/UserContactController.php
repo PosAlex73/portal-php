@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserContactRequest;
 use App\Http\Requests\UpdateUserContactRequest;
 use App\Models\UserContact;
+use Illuminate\Http\Request;
 
 class UserContactController extends AdminController
 {
@@ -92,5 +93,12 @@ class UserContactController extends AdminController
         $userContact->delete();
 
         return redirect(route('contact.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        UserContact::destroy($request->get('contacts'));
+
+        return redirect(route('users.tabs', ['tab' => 'contacts', 'user' => $request->get('user_id')]));
     }
 }

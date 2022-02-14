@@ -31,7 +31,7 @@ $links = $user->links
                             <td>{{ $link->title }}</td>
                             <td><a href="{{ $link->url }}">{{ __('vars.link_to_portfolio') }}</a></td>
                             <td>{{ __('vars.common_status_' . $link->status) }}</td>
-                            <td><input type="checkbox" class="form-check" value="user_links[{{$link->id}}]"></td>
+                            <td><input type="checkbox" class="form-check" name="user_links[]" value="{{$link->id}}"></td>
                         </tr>
                         @endforeach
                     </tbody>
