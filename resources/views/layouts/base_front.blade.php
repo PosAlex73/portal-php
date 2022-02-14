@@ -6,7 +6,9 @@
 </head>
 <body>
 @include('components.front.base.toolbar')
-@yield('content')
+<div class="container">
+    @yield('content')
+</div>
 </body>
 @include('components.front.base.footer')
 @include('components.front.base.scripts')

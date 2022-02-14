@@ -10,7 +10,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $articles = Article::all()->orderBy('created_at', 'DESC')->take(static::getPaginate())->get();
+        $articles = Article::orderByDesc('created_at')->paginate(static::getPaginate());
 
         return view('front.blog.list', ['articles' => $articles]);
     }

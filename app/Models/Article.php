@@ -12,4 +12,9 @@ class Article extends Model
     protected $fillable = [
         'title', 'text', 'image', 'status', 'created', 'updated'
     ];
+
+    public function getShortDescriptionAttribute()
+    {
+        return substr($this->text, 20, 50);
+    }
 }
