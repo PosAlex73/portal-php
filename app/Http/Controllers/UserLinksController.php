@@ -4,23 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserLinksRequest;
 use App\Http\Requests\UpdateUserLinksRequest;
+use App\Models\User;
 use App\Models\UserLinks;
+use Illuminate\Http\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class UserLinksController extends AdminController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $links = UserLinks::paginate(static::getPaginate());
-
-        return view('admin.user_links.index', ['links' => $links]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -39,10 +29,10 @@ class UserLinksController extends AdminController
      */
     public function store(StoreUserLinksRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'status', 'user_id']);
+        $fields = $request->safe()->only(['title', 'status', 'user_id', 'url']);
         $link = UserLinks::create($fields);
 
-        return redirect(route('user_link.index'));
+        return redirect(route('users.tabs', ['tab' => 'links', 'user' => $link->user]));
     }
 
     /**
@@ -93,5 +83,12 @@ class UserLinksController extends AdminController
         $userLinks->delete();
 
         return redirect(route('user_link.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        UserLinks::destroy($request->get('user_links'));
+
+        return redirect(route('users.tabs', ['tab' => 'links', 'user' => $request->get('user_id')]));
     }
 }

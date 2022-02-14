@@ -34,6 +34,7 @@ Route::prefix('/boss')->middleware(['auth', 'checkAdmin'])->group(function () {
     Route::post('thread/mass_delete', [ThreadMessageController::class, 'massDelete'])->name('threads.mass_delete');
     Route::post('category/mass_delete', [CategoryController::class, 'massDelete'])->name('categories.mass_delete');
     Route::post('article/mass_delete', [ArticleController::class, 'massDelete'])->name('articles.mass_delete');
+    Route::post('links/mass_delete', [UserLinksController::class, 'massDelete'])->name('links.mass_delete');
 
     Route::get('user/{tab}/{user}', [UserController::class, 'tabs'])->name('users.tabs');
     Route::post('user/profile/{user}', [UserProfileController::class, 'profile'])->name('users.profile');
