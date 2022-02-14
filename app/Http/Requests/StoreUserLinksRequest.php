@@ -28,7 +28,8 @@ class StoreUserLinksRequest extends FormRequest
         return [
             'title' => 'required|min:2|max:1024',
             'status' => ['required', Rule::in(CommonStatuses::getAll())],
-            'user_id' => 'required|exists:users,id'
+            'user_id' => 'required|exists:users,id',
+            'url' => 'required|max:1024'
         ];
     }
 }

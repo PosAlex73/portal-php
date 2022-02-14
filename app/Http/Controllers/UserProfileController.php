@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUserProfileRequest;
 use App\Models\User;
-use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
 class UserProfileController extends AdminController
