@@ -28,4 +28,9 @@ class UserController extends Controller
 
         return view('front.users.view', ['user' => $user]);
     }
+
+    public function tabs(string $tab, User $user)
+    {
+        return view('front.profiles.tabs.' . $tab, ['user' => $user]);
+    }
 }

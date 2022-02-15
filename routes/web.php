@@ -36,11 +36,12 @@ Route::prefix('/profile')->middleware(['auth'])->group(function() {
     Route::get('/thread', [ProfileController::class, 'thread'])->name('profile_thread');
     Route::post('/thread/message', [ProfileController::class, 'newMessage'])->name('profile_new_message');
 
+    Route::get('user/{tab}/{user}', [UserController::class, 'tabs'])->name('front_profile.tabs');
+
     Route::prefix('/portfolio')->group(function () {
         Route::get('/project/{portfolio}', [PortfolioController::class, 'show'])->name('portfolio_show');
         Route::post('/project/{portfolio}', [PortfolioController::class, 'store'])->name('portfolio_store');
         Route::put('/project/{portfolio}', [PortfolioController::class, 'update'])->name('portfolio_update');
         Route::delete('/project/delete/{portfolio}', [PortfolioController::class, 'delete'])->name('portfolio_delete');
-
     });
 });

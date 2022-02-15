@@ -8,23 +8,23 @@ class ProfileTabs implements AMenu
     {
         return [
             'profile' => [
-                'link' => 'users.tabs',
+                'link' => 'front_profile.tabs',
                 'name' => 'profile',
             ],
             'links' => [
-                'link' => 'users.tabs',
+                'link' => 'front_profile.tabs',
                 'name' => 'links',
             ],
             'contacts' => [
-                'link' => 'users.tabs',
+                'link' => 'front_profile.tabs',
                 'name' => 'contacts',
             ],
             'thread' => [
-                'link' => 'users.tabs',
+                'link' => 'front_profile.tabs',
                 'name' => 'thread'
             ],
             'settings' => [
-                'link' => 'users.tabs',
+                'link' => 'front_profile.tabs',
                 'name' => 'settings'
             ]
         ];
