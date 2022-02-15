@@ -18,9 +18,11 @@ use App\Models\UserProfile;
 use App\Models\UserSetting;
 use Database\Seeders\Settings\SettingsInitial;
 use Database\Seeders\Settings\UserSettingInitial;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -33,7 +35,7 @@ class CommonSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $user = User::create([
             'name' => 'Admin Admin',
             'email' => 'admin@admin.ru',
             'email_verified_at' => now(),
@@ -43,7 +45,9 @@ class CommonSeeder extends Seeder
             'status' => CommonStatuses::ACTIVE
         ]);
 
-        User::create([
+        Event::dispatch(new Registered($user));
+
+        $user = User::create([
             'name' => 'User User',
             'email' => 'user@user.ru',
             'email_verified_at' => now(),
@@ -52,6 +56,8 @@ class CommonSeeder extends Seeder
             'type' => UserTypes::SIMPLE,
             'status' => CommonStatuses::ACTIVE
         ]);
+
+        Event::dispatch(new Registered($user));
 
         Article::factory()->count(50)->create();
 

@@ -10,7 +10,7 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-
+        return view('front.profiles.view');
     }
 
     public function update(UserProfile $profile)
