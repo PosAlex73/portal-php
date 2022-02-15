@@ -2,13 +2,13 @@
 
 namespace App\Composers\Users;
 
-use Database\Seeders\Settings\UserSettingInitial;
+use App\Menus\ProfileTabs;
 use Illuminate\View\View;
 
 class UserProfileComposer
 {
     public function compose(View $view)
     {
-        $view->with('user_settings', UserSettingInitial::getUserSettings());
+        $view->with('userTabs', ProfileTabs::getMenu());
     }
 }
