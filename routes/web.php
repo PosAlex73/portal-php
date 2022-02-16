@@ -30,6 +30,9 @@ Route::prefix('/blog')->group(function () {
 });
 
 Route::prefix('/profile')->middleware(['auth'])->group(function() {
+    Route::post('/user/{user}', [UserController::class, 'update'])->name('front.user.update');
+    Route::post('/user/contacts/{user}', [UserController::class, 'saveContacts'])->name('front.contacts.update');
+
     Route::get('/', [ProfileController::class, 'profile'])->name('front_profile');
     Route::post('/profile/{profile}', [ProfileController::class, 'update'])->name('profile_update');
     Route::get('/notifications', [ProfileController::class, 'notifications'])->name('profile_notifications');

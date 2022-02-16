@@ -45,7 +45,7 @@ class ComposeProvider extends ServiceProvider
 
         View::composer(['admin.threads.edit', 'admin.threads.create', 'admin.portfolios.edit', 'admin.portfolios.create'], SimpleUserComposer::class);
         View::composer(['admin.users.edit', 'admin.users.views.*'], UserMenuComposer::class);
-        View::composer(['front.profiles.view'], UserProfileComposer::class);
+        View::composer(['front.profiles.*'], UserProfileComposer::class);
 
         View::composer(['admin.users.views.profile'], UserSettingsComposer::class);
         View::composer(['front.profiles.view'], UserSettingsComposer::class);
