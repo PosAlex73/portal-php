@@ -1,6 +1,10 @@
+@php
+$links = $user->links;
+@endphp
+
 @extends('layouts.users.profile')
 @section('user_info')
-    <form action="{{ route('links.mass_delete') }}" method="post">
+    <form action="{{ route('front_links.store', ['user' => $user]) }}" method="post">
         @csrf
         @include('components.fields.hidden', ['name' => 'user_id', 'value' => $user->id])
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_new_link">
@@ -8,7 +12,7 @@
         </button>
         @include('components.admin.buttons.mass_delete')
 
-        @if(!empty($links))
+        @if($links->count() > 0)
             <table class="table">
                 <thead>
                 <tr>

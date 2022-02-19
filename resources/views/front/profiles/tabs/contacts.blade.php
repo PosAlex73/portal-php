@@ -12,7 +12,7 @@ $contacts = $user->contacts
         </button>
         @include('components.admin.buttons.mass_delete')
 
-        @if(!empty($contacts))
+        @if($contacts->count() > 0)
             <table class="table">
                 <thead>
                 <tr>
