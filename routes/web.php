@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\Front\BlogController;
+use App\Http\Controllers\Front\ContactsController;
 use App\Http\Controllers\Front\IndexController;
+use App\Http\Controllers\Front\LinksController;
 use App\Http\Controllers\Front\PortfolioController;
 use App\Http\Controllers\Front\ProfileController;
+use App\Http\Controllers\Front\SettingsController;
 use App\Http\Controllers\Front\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +35,18 @@ Route::prefix('/blog')->group(function () {
 Route::prefix('/profile')->middleware(['auth'])->group(function() {
     Route::post('/user/{user}', [UserController::class, 'update'])->name('front.user.update');
     Route::post('/user/contacts/{user}', [UserController::class, 'saveContacts'])->name('front.contacts.update');
+    Route::post('/user/contacts/{user}', [UserController::class, 'saveContacts'])->name('front.contacts.update');
 
-    Route::post('/user/links/{user}', [\App\Http\Controllers\Front\LinksController::class, 'update'])->name('front_links.store');
+    //links
+    Route::post('/user/{user}/links', [LinksController::class, 'update'])->name('front_links.store');
+    Route::delete('/user/links/', [LinksController::class, 'massDelete'])->name('front_links.delete');
 
+    //contacts
+    Route::post('/user/contacts/{user}', [ContactsController::class, 'update'])->name('front_contacts.store');
+    Route::delete('/user/contacts/', [ContactsController::class, 'massDelete'])->name('front_contacts.delete');
+
+    //settings
+    Route::post('/user/{user}/settings', [SettingsController::class, 'update'])->name('front_settings.update');
 
     Route::get('/', [ProfileController::class, 'profile'])->name('front_profile');
     Route::post('/profile/{profile}', [ProfileController::class, 'update'])->name('profile_update');
@@ -42,6 +54,7 @@ Route::prefix('/profile')->middleware(['auth'])->group(function() {
     Route::get('/thread', [ProfileController::class, 'thread'])->name('profile_thread');
     Route::post('/thread/message', [ProfileController::class, 'newMessage'])->name('profile_new_message');
 
+    //profile tabs
     Route::get('user/{tab}/{user}', [UserController::class, 'tabs'])->name('front_profile.tabs');
 
     Route::prefix('/portfolio')->group(function () {

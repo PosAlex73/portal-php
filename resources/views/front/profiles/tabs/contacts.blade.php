@@ -4,8 +4,9 @@ $contacts = $user->contacts
 
 @extends('layouts.users.profile')
 @section('user_info')
-    <form action="{{ route('contacts.mass_delete') }}" method="post">
+    <form action="{{ route('front_contacts.delete') }}" method="post">
         @csrf
+        @method('DELETE')
         @include('components.fields.hidden', ['name' => 'user_id', 'value' => $user->id])
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_new_contact">
             {{ __('vars.create_new_contact') }}
@@ -42,7 +43,7 @@ $contacts = $user->contacts
         @endif
     </form>
 
-    <form action="{{ route('contact.store') }}" method="post">
+    <form action="{{ route('front_contacts.store', ['user' => $user]) }}" method="post">
         @csrf
         @include('components.fields.hidden', ['name' => 'user_id', 'value' => $user->id])
         <div class="modal fade" id="create_new_contact" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

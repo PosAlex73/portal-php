@@ -10,7 +10,7 @@ class UserLinks extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'status', 'user_id'
+        'title', 'status', 'user_id', 'url'
     ];
 
     public function user()
