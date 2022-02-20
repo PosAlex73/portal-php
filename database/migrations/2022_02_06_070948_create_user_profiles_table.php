@@ -20,8 +20,8 @@ class CreateUserProfilesTable extends Migration
             $table->string('phone', 128)->nullable(true)->default('');
             $table->string('address', 512)->nullable(true)->default('');
             $table->string('lang', 255);
-            $table->text('skills');
-            $table->text('about');
+            $table->text('skills')->nullable(true);
+            $table->text('about')->nullable(true);
             $table->string('image')->nullable(true)->default('');
             $table->timestamps();
         });

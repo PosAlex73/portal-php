@@ -47,11 +47,9 @@ Route::prefix('/profile')->middleware(['auth'])->group(function() {
     //settings
     Route::post('/user/{user}/settings', [SettingsController::class, 'update'])->name('front_settings.update');
 
-    //portfolios
-//    Route::get()
-
+    //profile
     Route::get('/', [ProfileController::class, 'profile'])->name('front_profile');
-    Route::post('/profile/{profile}', [ProfileController::class, 'update'])->name('profile_update');
+    Route::put('/profile/{profile}', [ProfileController::class, 'update'])->name('front.profile.update');
     Route::get('/notifications', [ProfileController::class, 'notifications'])->name('profile_notifications');
     Route::get('/thread', [ProfileController::class, 'thread'])->name('profile_thread');
     Route::post('/thread/message', [ProfileController::class, 'newMessage'])->name('profile_new_message');

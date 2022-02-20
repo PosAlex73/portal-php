@@ -4,7 +4,7 @@
 
 @extends('layouts.users.profile')
 @section('user_info')
-    <form action="{{ route('profiles.update', ['user' => $user]) }}" method="post">
+    <form action="{{ route('front.profile.update', ['profile' => $profile]) }}" method="post">
         @csrf
         @method('PUT')
         @include('components.fields.input', ['name' => 'phone', 'label' => __('vars.phone'), 'value' => $profile->phone])

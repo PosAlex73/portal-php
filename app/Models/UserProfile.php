@@ -13,6 +13,14 @@ class UserProfile extends Model
         'phone', 'address', 'lang', 'skills', 'about'
     ];
 
+    protected $attributes = [
+        'phone' => '',
+        'address' => '',
+        'lang' => '',
+        'skills' => '',
+        'about' => ''
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

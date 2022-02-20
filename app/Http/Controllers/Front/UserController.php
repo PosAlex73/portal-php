@@ -20,6 +20,14 @@ class UserController extends Controller
         return view('front.users.list', ['users' => $users]);
     }
 
+    public function update(Request $request, User $user)
+    {
+        $fields = $request->only(['name', 'email', 'status']);
+        $user->update($fields);
+
+        return redirect(route('front_profile'));
+    }
+
     public function user(User $user)
     {
         if ($user->status !== CommonStatuses::ACTIVE && $user->type === UserTypes::ADMIN) {

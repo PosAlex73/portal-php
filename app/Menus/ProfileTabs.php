@@ -26,10 +26,6 @@ class ProfileTabs implements AMenu
             'settings' => [
                 'link' => 'front_profile.tabs',
                 'name' => 'settings'
-            ],
-            'portfolios' => [
-                'link' => 'front.portfolios',
-                'name' => 'front_portfolios'
             ]
         ];
     }

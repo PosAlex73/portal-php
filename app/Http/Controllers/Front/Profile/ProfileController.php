@@ -14,9 +14,12 @@ class ProfileController extends Controller
         return view('front.profiles.view', ['user' => Auth::user()]);
     }
 
-    public function update(UserProfile $profile)
+    public function update(Request $request, UserProfile $profile)
     {
+        $fields = $request->only(['phone', 'address', 'lang', 'skills', 'about']);
+        $profile->update($fields);
 
+        return redirect(route('front_profile.tabs', ['tab' => 'profile', 'user' => $profile->user]));
     }
 
     public function notifications()

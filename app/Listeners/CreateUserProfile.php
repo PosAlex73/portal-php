@@ -3,12 +3,8 @@
 namespace App\Listeners;
 
 use App\Enums\CommonStatuses;
-use App\Models\Thread;
-use App\Models\UserLinks;
-use App\Models\UserProfile;
-use App\Models\UserSetting;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Models\User;
+use App\Notifications\User\NewUser;
 
 class CreateUserProfile
 {
@@ -20,6 +16,7 @@ class CreateUserProfile
      */
     public function handle($event)
     {
+        /** @var User $user */
         $user = $event->user;
         $user->profile()->create([
             'phone' => '',
@@ -37,5 +34,7 @@ class CreateUserProfile
         $user->thread()->create([
             'status' => CommonStatuses::ACTIVE
         ]);
+
+        $user->notify(new NewUser());
     }
 }
