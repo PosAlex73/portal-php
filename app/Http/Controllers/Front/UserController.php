@@ -33,9 +33,4 @@ class UserController extends Controller
     {
         return view('front.profiles.tabs.' . $tab, ['user' => $user]);
     }
-
-    public function saveContacts(Request $request, User $user)
-    {
-
-    }
 }

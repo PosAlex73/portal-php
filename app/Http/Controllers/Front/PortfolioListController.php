@@ -13,13 +13,14 @@ use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 
-class PortfolioController extends Controller
+class PortfolioListController extends Controller
 {
     public function list(Request $request)
     {
         if ($request->exists('search')) {
             $search = $request->get('search');
-            $portfolios = Portfolio::where(['title', 'LIKE', "%$search"])->orWhere(['description', 'LIKE', "%$search"]);
+            $portfolios = Portfolio::where('title', 'LIKE', "$search%")
+                ->orWhere('description', 'LIKE', "$search%")->paginate(static::getPaginate());
         } else {
             $portfolios = Portfolio::paginate(static::getPaginate());
         }
@@ -30,21 +31,6 @@ class PortfolioController extends Controller
     public function show(Portfolio $portfolio)
     {
         return view('front.portfolios.view', ['portfolio' => $portfolio]);
-    }
-
-    public function store(Portfolio $portfolio)
-    {
-
-    }
-
-    public function update(Portfolio $portfolio)
-    {
-
-    }
-
-    public function delete(Portfolio $portfolio)
-    {
-
     }
 
     public function contact(Request $request, User $user)

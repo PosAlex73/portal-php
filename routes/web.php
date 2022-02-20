@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\Front\BlogController;
-use App\Http\Controllers\Front\ContactsController;
+use App\Http\Controllers\Front\Profile\ContactsController;
 use App\Http\Controllers\Front\IndexController;
-use App\Http\Controllers\Front\LinksController;
-use App\Http\Controllers\Front\PortfolioController;
-use App\Http\Controllers\Front\ProfileController;
-use App\Http\Controllers\Front\SettingsController;
+use App\Http\Controllers\Front\Profile\LinksController;
+use App\Http\Controllers\Front\PortfolioListController;
+use App\Http\Controllers\Front\Profile\ProfileController;
+use App\Http\Controllers\Front\Profile\SettingsController;
 use App\Http\Controllers\Front\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +21,9 @@ Route::prefix('/users')->group(function () {
 });
 
 Route::prefix('/portfolios')->group(function () {
-    Route::get('/', [PortfolioController::class, 'list'])->name('front.portfolios');
-    Route::get('/{portfolio}', [PortfolioController::class, 'show'])->name('front.portfolio');
-    Route::post('/contact/{user}', [PortfolioController::class, 'contact'])->name('front.contact');
-
+    Route::get('/', [PortfolioListController::class, 'list'])->name('front.portfolios');
+    Route::get('/{portfolio}', [PortfolioListController::class, 'show'])->name('front.portfolio');
+    Route::post('/contact/{user}', [PortfolioListController::class, 'contact'])->name('front.contact');
 });
 
 Route::prefix('/blog')->group(function () {
@@ -48,6 +47,9 @@ Route::prefix('/profile')->middleware(['auth'])->group(function() {
     //settings
     Route::post('/user/{user}/settings', [SettingsController::class, 'update'])->name('front_settings.update');
 
+    //portfolios
+//    Route::get()
+
     Route::get('/', [ProfileController::class, 'profile'])->name('front_profile');
     Route::post('/profile/{profile}', [ProfileController::class, 'update'])->name('profile_update');
     Route::get('/notifications', [ProfileController::class, 'notifications'])->name('profile_notifications');
@@ -58,9 +60,9 @@ Route::prefix('/profile')->middleware(['auth'])->group(function() {
     Route::get('user/{tab}/{user}', [UserController::class, 'tabs'])->name('front_profile.tabs');
 
     Route::prefix('/portfolio')->group(function () {
-        Route::get('/project/{portfolio}', [PortfolioController::class, 'show'])->name('portfolio_show');
-        Route::post('/project/{portfolio}', [PortfolioController::class, 'store'])->name('portfolio_store');
-        Route::put('/project/{portfolio}', [PortfolioController::class, 'update'])->name('portfolio_update');
-        Route::delete('/project/delete/{portfolio}', [PortfolioController::class, 'delete'])->name('portfolio_delete');
+        Route::get('/project/{portfolio}', [PortfolioListController::class, 'show'])->name('portfolio_show');
+        Route::post('/project/{portfolio}', [PortfolioListController::class, 'store'])->name('portfolio_store');
+        Route::put('/project/{portfolio}', [PortfolioListController::class, 'update'])->name('portfolio_update');
+        Route::delete('/project/delete/{portfolio}', [PortfolioListController::class, 'delete'])->name('portfolio_delete');
     });
 });
