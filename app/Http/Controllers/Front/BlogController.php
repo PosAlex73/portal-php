@@ -8,9 +8,19 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::orderByDesc('created_at')->paginate(static::getPaginate());
+        $search = $request->get('search');
+
+        if ($request->exists('search')) {
+            $search = $request->get('search');
+            $articles = Article::where('title', 'LIKE', "%$search%")
+                ->orWhere('text', 'LIKE', "%$search")
+                ->orderByDesc('created_at')
+                ->paginate(static::getPaginate());
+        } else {
+            $articles = Article::orderByDesc('created_at')->paginate(static::getPaginate());
+        }
 
         return view('front.blog.list', ['articles' => $articles]);
     }

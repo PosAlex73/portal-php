@@ -26,9 +26,7 @@ class UpdateSettingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'value' => 'required',
-            'type' => ['required', Rule::in(SettingTypes::getAll())]
+
         ];
     }
 }

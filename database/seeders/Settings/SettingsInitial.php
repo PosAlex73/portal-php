@@ -3,6 +3,7 @@
 namespace Database\Seeders\Settings;
 
 use App\Enums\CommonStatuses;
+use App\Enums\Langs;
 use App\Enums\Settings\SettingEnums;
 use App\Enums\SettingTypes;
 
@@ -11,37 +12,39 @@ class SettingsInitial
     public static function getSettings()
     {
         return [
-            'lang' => [
+            SettingEnums::LANGUAGE => [
                 'title' => SettingEnums::LANGUAGE,
                 'value' => 'en',
-                'type' => SettingTypes::SELECT
+                'type' => SettingTypes::SELECT,
+                'variants' => Langs::getAll()
             ],
-            'title' => [
+            SettingEnums::SITE_TILE => [
                 'title' => SettingEnums::SITE_TILE,
                 'value' => '',
                 'type' => SettingTypes::INPUT
             ],
-            'description' => [
+            SettingEnums::SITE_DESCRIPTION => [
                 'title' => SettingEnums::SITE_DESCRIPTION,
                 'value' => '',
                 'type' => SettingTypes::TEXTAREA
             ],
-            'active' => [
+            SettingEnums::SITE_ACTIVE => [
                 'title' => SettingEnums::SITE_ACTIVE,
                 'value' => CommonStatuses::ACTIVE,
-                'type' => SettingTypes::SELECT
+                'type' => SettingTypes::SELECT,
+                'variants' => CommonStatuses::getAll()
             ],
-            'front_pagination' => [
+            SettingEnums::FRONT_PAGINATION => [
                 'title' => SettingEnums::FRONT_PAGINATION,
                 'value' => 15,
                 'type' => SettingTypes::NUMBER
             ],
-            'admin_pagination' => [
+            SettingEnums::ADMIN_PAGINATION => [
                 'title' => SettingEnums::ADMIN_PAGINATION,
                 'value' => 15,
                 'type' => SettingTypes::NUMBER
             ],
-            'logo' => [
+            SettingEnums::LOGO => [
                 'title' => SettingEnums::LOGO,
                 'value' => '',
                 'type' => SettingTypes::IMAGE

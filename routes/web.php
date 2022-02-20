@@ -26,6 +26,7 @@ Route::prefix('/portfolios')->group(function () {
     Route::post('/contact/{user}', [PortfolioListController::class, 'contact'])->name('front.contact');
 });
 
+//blog
 Route::prefix('/blog')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('front.blog');
     Route::get('/article/{article}', [BlogController::class, 'article'])->name('front.article');
