@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ *
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -44,36 +47,57 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return mixed
+     */
     public function portfolios()
     {
         return $this->hasMany(Portfolio::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function links()
     {
         return $this->hasMany(UserLinks::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function skills()
     {
         return $this->belongsToMany(Skill::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function thread()
     {
         return $this->hasOne(Thread::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function contacts()
     {
         return $this->hasMany(UserContact::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function profile()
     {
         return $this->hasOne(UserProfile::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function settings()
     {
         return $this->hasOne(UserSetting::class);

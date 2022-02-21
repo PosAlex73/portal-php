@@ -1,7 +1,7 @@
 <div class="mb-3">
-    @if(!empty($img))
+    @if(!empty($value))
     <div class="">
-        <img src="{{ $img }}" alt="{{ $alt ?? $name }}" class="img-fluid">
+        <img src="{{ asset($value) }}" alt="{{ $alt ?? $name }}" class="img-fluid">
     </div>
     @else
         <p>{{ __('vars.have_no_image') }}</p>

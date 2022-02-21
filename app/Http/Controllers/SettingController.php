@@ -25,11 +25,7 @@ class SettingController extends AdminController
     public function update(Request $request)
     {
         $fields = $request->only(array_keys(SettingsInitial::getSettings()));
-        $default_settings = SettingsInitial::getSettings();
-        foreach ($fields as $title => $value) {
-            Setting::where('title', $title)
-                ->update(['value' => !empty($value) ? $value : $default_settings[$title]['value']]);
-        }
+        Setting::saveSettings($request, $fields);
 
         return redirect(route('settings.index'));
     }

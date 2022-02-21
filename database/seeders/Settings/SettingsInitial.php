@@ -51,4 +51,11 @@ class SettingsInitial
             ]
         ];
     }
+
+    public static function getFileTypes()
+    {
+        return [
+            SettingTypes::FILE, SettingTypes::IMAGE
+        ];
+    }
 }
