@@ -28,7 +28,7 @@ class Setting extends Model
                 Setting::where('title', $title)
                     ->update(['value' => !empty($value) ? $value : $default_settings[$title]['value']]);
             } else {
-               $path = $request->file($title)->store('settings');
+               $path = $request->file($title)->store('settings', ['disk' => 'public']);
                $old_logo = DB::table('settings')->where('title', '=', SettingEnums::LOGO)->first('value');
                Storage::delete($old_logo->value);
                Setting::where('title', $title)
