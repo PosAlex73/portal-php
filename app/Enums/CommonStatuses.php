@@ -2,6 +2,9 @@
 
 namespace App\Enums;
 
+/**
+ * Enumable
+ */
 class CommonStatuses
 {
     use Enumuble;
